@@ -11,26 +11,27 @@ pipeline
                 checkout changelog: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'github', repoUrl: 'https://github.com/lynaspublic/spring-demo']]
             }
         }
-    }
+    
 
-    stage('Unit & Integration Tests') 
-    {
-        steps 
+        stage('Unit & Integration Tests') 
         {
-            script 
+            steps 
             {
-                sh './gradlew clean test --no-daemon' //run a gradle task
+                script 
+                {
+                    sh './gradlew clean test --no-daemon' //run a gradle task
+                }
             }
         }
-    }
 
-    stage('RUN BUILD') 
-    {
-        steps 
+        stage('RUN BUILD') 
         {
-            script 
+            steps 
             {
-                sh './gradlew build --no-daemon' //run a gradle task
+                script 
+                {
+                    sh './gradlew build --no-daemon' //run a gradle task
+                }
             }
         }
     }
