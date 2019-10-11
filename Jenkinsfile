@@ -8,7 +8,8 @@ pipeline
         {
             steps 
             { //Checking out the repo
-                checkout changelog: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'github', repoUrl: 'https://github.com/lynaspublic/spring-demo']]
+                git branch: 'master', url: 'https://github.com/lynaspublic/spring-demo.git'
+                sh "ls -lat"
             }
         }
     
